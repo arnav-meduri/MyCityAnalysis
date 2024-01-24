@@ -2,10 +2,10 @@
 title: City Crime Model
 date: 2022-1-22
 authors:
-  - name: Arnav V. Meduri
+  - name: Arnav Meduri
     affiliations: 
       - North Carolina School of Science and Mathematics  
-  - name: Abhinav V. Meduri 
+  - name: Abhinav Meduri 
     affiliations:
       - North Carolina School of Science and Mathematics
 ---
@@ -36,7 +36,7 @@ import pandas as pd
 # Re-creating the graph in one code block
 
 # Load the data
-file_path = "/Users/arnavmeduri/Documents/jtermproject24/My_City_Crime_Data.csv"
+file_path = "./My_City_Crime_Data.csv"
 data = pd.read_csv(file_path)
 
 # Cleaning the data
