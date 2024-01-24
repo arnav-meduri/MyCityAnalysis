@@ -16,9 +16,9 @@ Crime is a common issue in nearly all major metropolitan areas, and My City, a f
 - The prevalence of specific types of crime.
 - The proportion of perpetrators arrested for a given crime.
 
-For each individual crime in My City, we assigned a score based on these factors. To assess the relative safety, we compared these scores to a national score calculated using a similar methodology. This comparison allowed us to determine a crime score differential for each type of crime. Summing these differentials, we arrived at an overall safety index for My City, which was **-71.13**.
+For each individual crime in My City, we assigned a score based on these factors. To assess the relative safety, we compared these scores to a national score calculated using a similar methodology. This comparison allowed us to determine a crime score differential for each type of crime. Summing these differentials, we arrived at an overall safety index for My City, which was -71.13.
 
-While our primary goal was to establish a quantitative measure for My City, the significance of this score lies in its comparison with other cities across the United States. Placing My City’s safety within this broader context provides valuable insights into its safety ranking relative to other cities. To maintain consistency, we tested our model on four other large cities, each with a population of over 300,000. Our comparative analysis revealed that Baltimore was the least safe city with a safety index of -101.36, while Virginia Beach ranked as the safest city, with a safety index of **-0.98**. My City fell in the middle as the second most dangerous city, closely followed by Chicago with an index of **-60.34**. Austin emerged as the second safest city with an index of **-6.08**.
+While our primary goal was to establish a quantitative measure for My City, the significance of this score lies in its comparison with other cities across the United States. Placing My City’s safety within this broader context provides valuable insights into its safety ranking relative to other cities. To maintain consistency, we tested our model on four other large cities, each with a population of over 300,000. Our comparative analysis revealed that Baltimore was the least safe city with a safety index of -101.36, while Virginia Beach ranked as the safest city, with a safety index of -0.98. My City fell in the middle as the second most dangerous city, closely followed by Chicago with an index of -60.34. Austin emerged as the second safest city with an index of -6.08.
 
 To assess the sensitivity and robustness of our model to limited crime data, we reduced the number of crimes included in our analysis. This reduction aimed to determine if it significantly affected the overall safety index, leading to a simplified model. Most large U.S. cities have limited crime data, typically comprising seven major crimes. However, since our model relied on 12 major factors, we sought to understand the impact of using only the crimes reported in the FBI’s Uniform Crime Report—a representation of the most relevant crimes affecting safety in the United States. In addition to constraining our model to this limited crime data, we adjusted the weight of the arrest factor to reflect its importance in comparison to non-arrested crimes.
 
@@ -93,10 +93,10 @@ Additionally, we wanted to consider the frequency of crime in our model, as more
 :label: my-equation
 CHPD = \frac{100,000 \times I}{PD}
 ```
-**CHPD** = Crime count per 100,000 people per day \
-**I** = Total number of crime incidents \
-**P** = Population \
-**D** = Number of days 
+CHPD = Crime count per 100,000 people per day \
+I = Total number of crime incidents \
+P = Population \
+D = Number of days 
 
 A city with more arrests is generally safer than one with fewer arrests, since it potentially has fewer perpetrators to commit crimes. Our model accounts for the influence of how many crimes result in arrests by incorporating an “arrest mitigation factor.” Crimes that result in arrests are weighed less than crimes in which the perpetrator is not cleared for an arrest.
 
@@ -121,9 +121,9 @@ In our model, a negative value compared to the national average for a specific c
 :label: my-equation
 CSD = CS_n - CS_x
 ```
-**CSD** = Crime score differential \
-**CS{sub}`n`** = National crime score \
-**N** = Crime score for any city 
+CSD = Crime score differential \
+CS{sub}`n` = National crime score \
+N = Crime score for any city 
 
 The overall safety index for a given city is the sum of the CSDs of all the significant crimes.
 
