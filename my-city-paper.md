@@ -2,10 +2,10 @@
 title: City Crime Model
 date: 2022-1-22
 authors:
-  - name: Arnav Meduri
+  - name: Arnav V. Meduri
     affiliations: 
       - North Carolina School of Science and Mathematics  
-  - name: Abhinav Meduri
+  - name: Abhinav V. Meduri 
     affiliations:
       - North Carolina School of Science and Mathematics
 ---
