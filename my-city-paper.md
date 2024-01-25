@@ -206,7 +206,7 @@ The overall safety index for a given city is the sum of the CSDs of all the sign
 :label: my-equation-4
 SI = \sum CSD
 ```
-The complete model is shown below, where the sum is for all 12 crimes. See quation {eq}`my-equation-5`. 
+The complete model is shown below, where the sum is for all 12 crimes. See Equation {eq}`my-equation-5`. 
 
 ```{math}
 :label: my-equation-5
