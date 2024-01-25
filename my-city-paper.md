@@ -160,7 +160,7 @@ SI = \sum (CS_n - S(0.8N A + N(1 - A)))
 
 The step-by-step process to calculate the safety index of a city is outlined in the figure below. 
 
-```{figure} ./flowchart_image.png
+```{figure} ./flowchart.png
 :name: myFigure
 :alt: Image depicting methodology
 :align: center
