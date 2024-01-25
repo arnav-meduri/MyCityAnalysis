@@ -162,10 +162,10 @@ We first wanted to consider that not all crimes are equally severe. For example,
 
 :::
 
-Additionally, we wanted to consider the frequency of crime in our model, as more crimes generally indicate that a city is less safe. Since cities with higher populations generally have more crimes than smaller cities, we used a frequency count of crimes per 100,000 people, as this is the standard metric for measuring crime prevalence across varying populations. To account for datasets covering varying lengths of time, we used the count per 100,000 people per day (CHPD) to measure crime prevalence in our model. 
+Additionally, we wanted to consider the frequency of crime in our model, as more crimes generally indicate that a city is less safe. Since cities with higher populations generally have more crimes than smaller cities, we used a frequency count of crimes per 100,000 people, as this is the standard metric for measuring crime prevalence across varying populations. To account for datasets covering varying lengths of time, we used the count per 100,000 people per day (CHPD) to measure crime prevalence in our model. See Equation {eq} `my-equation-1`.
 
 ```{math}
-:label: my-equation
+:label: my-equation-1
 CHPD = \frac{100,000 \times I}{PD}
 ```
 CHPD = Crime count per 100,000 people per day \
@@ -175,10 +175,10 @@ D = Number of days
 
 A city with more arrests is generally safer than one with fewer arrests, since it potentially has fewer perpetrators to commit crimes. Our model accounts for the influence of how many crimes result in arrests by incorporating an “arrest mitigation factor.” Crimes that result in arrests are weighed less than crimes in which the perpetrator is not cleared for an arrest.
 
-Using the equation below, we combined these factors to create a “crime score” for each crime category. We chose to calculate a score for each category to provide more granularity. This could be useful to government agencies attempting to analyze the impact of a specific type of crime, or to civilians trying to avoid certain types of crime.
+Using the equation below, we combined these factors to create a “crime score” for each crime category. We chose to calculate a score for each category to provide more granularity. This could be useful to government agencies attempting to analyze the impact of a specific type of crime, or to civilians trying to avoid certain types of crime. See Equation {eq} `my-equation-2`.
 
 ```{math}
-:label: my-equation
+:label: my-equation-2
 \text{CS} = S(0.8N A + N(1 - A))
 ```
 **CS** = Crime score \
@@ -190,26 +190,26 @@ We separate the crimes based on how many resulted in arrests by multiplying the 
 
 To make our model easily interpretable, we subtracted the crime score calculated for a specific crime in a given city from the corresponding national score for that crime. The national crime score, CS{sub}`n`, for each crime category, was determined using the same formula applied at the city level; however, for the national calculation, CHPD was computed using the entire U.S. population in 2015 (**P = 320 million**) and the total number of days in the year (**D = 365**). This approach is based on the nature of the data from the FBI’s Uniform Crime Report for 2015, which encompasses an entire year. Additionally, since the UCR data includes reported crime incidents for roughly 30% of the total U.S. population, we adjusted the frequency of incidents to reflect the size of the entire population by scaling the incident numbers by a factor of 10/3. 
 
-In our model, a negative value compared to the national average for a specific crime indicates that the city is less safe for a given crime than the national average, and a positive value compared to the national average indicates that the city is safer for a specific crime.
+In our model, a negative value compared to the national average for a specific crime indicates that the city is less safe for a given crime than the national average, and a positive value compared to the national average indicates that the city is safer for a specific crime. See Equation {eq} `my-equation-3`.
 
 ```{math}
-:label: my-equation
+:label: my-equation-3
 CSD = CS_n - CS_x
 ```
 CSD = Crime score differential \
 CS{sub}`n` = National crime score \
 N = Crime score for any city 
 
-The overall safety index for a given city is the sum of the CSDs of all the significant crimes.
+The overall safety index for a given city is the sum of the CSDs of all the significant crimes. See Equation {eq} `my-equation-4`.
 
 ```{math}
-:label: my-equation
+:label: my-equation-4
 SI = \sum CSD
 ```
-The complete model is shown below, where the sum is for all 12 crimes. 
+The complete model is shown below, where the sum is for all 12 crimes. See Equation {eq} `my-equation-5`.
 
 ```{math}
-:label: my-equation
+:label: my-equation-5
 SI = \sum (CS_n - S(0.8N A + N(1 - A)))
 ```
 :::{table} National crime score (CS{sub}`n`) values for each of the 12 significant crimes. Theft has the highest CS{sub}`n` value (17.01) whereas arson has the lowest CSn value (0.28). The CS{sub}`n` values will be used as a benchmark to determine how far a city’s individual crimes are from the national average. 
