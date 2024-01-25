@@ -167,4 +167,28 @@ The step-by-step process to calculate the safety index of a city is outlined in 
 
 Flowchart of the process to determine safety index. Our model takes as inputs the number of incidents of each significant crime, population, time period in days, arrest percentage, and severity of each crime. It calculates various intermediate values, such as crime per hundred thousand people per day, and the crime score for each crime. Then, it calculates a crime score differential for a given type of crime, based on the national score for that crime. The crime score differentials for each type of crime are summed together to determine the overall safety index of a city.
 ```
+### Application & Testing of Model
 
+Our model indicates that My City has a Safety Index of -71.13. This negative value suggests that My City is less safe than the national average. To properly interpret this value, comparing it to real-life cities and their known safety reputations is essential. Given My City’s large population of 2.8 million, we chose to compare it with other large cities. We defined a large city as one with a population of over 300,000, following the standard used by Forbes. We selected Chicago for comparison due to its similar population size of 2.7 million. We also included Baltimore, as it is ranked the third most dangerous city in the country by Forbes and had more available data than the two cities ranked as less safe. Additionally, we chose Austin, Texas, and Virginia Beach, Virginia, since Forbes ranked them as the 15th and 2nd safest large cities, respectively. These cities were selected because they had more available data than other relatively safe large cities. The Crime per Hundred People Data (CHPD) and Safety Indices for these cities are presented in Table 4.
+
+:::{table} Comparative safety indices for four cities: My City, Chicago, Austin, and Virginia Beach. Virginia Beach has the highest safety index, followed by Austin, Chicago, and My City. The relative ranking provided by our model aligns with Forbes’ published ranking.
+:label: table
+:align: center
+
+| Crime Category           | Baltimore CSD | My City CSD | Chicago CSD | Austin CSD | Virginia Beach CSD |
+|--------------------------|---------------|-------------|-------------|------------|--------------------|
+| Criminal Damage          | 7.13          | -3.19       | -5.01       | 8.11       | 0.92               |
+| Theft                    | -16.18        | -6.92       | -5.53       | 4.79       | -3.68              |
+| Battery                  | -23.57        | -45.54      | -44.96      | 1.69       | 1.66               |
+| Assault                  | -9.39         | 0.21        | 0.41        | -8.34      | -3.59              |
+| Narcotics                | 0.12          | -4.05       | 4.68        | 3.15       | -2.73              |
+| Robbery                  | -25.15        | -7.38       | -6.57       | 0.16       | 0.64               |
+| Weapons Violation        | -0.69         | -0.36       | -0.55       | 0.97       | -0.75              |
+| Motor Vehicle Theft      | -9.48         | -1.74       | -1.64       | -0.30      | 0.00               |
+| Homicide                 | -10.59        | -1.42       | -2.56       | -0.08      | -0.03              |
+| Burglary                 | -13.36        | -0.77       | 0.12        | -15.70     | 5.25               |
+| Arson                    | -0.73         | -0.17       | -0.16       | -0.06      | 0.16               |
+| Criminal Sexual Assault  | 0.52          | 0.20        | 1.41        | -0.46      | 1.16               |
+| Safety Index             | -101.37       | -71.13      | -60.33      | -6.07      | -0.98              |
+
+:::
