@@ -158,4 +158,13 @@ SI = \sum (CS_n - S(0.8N A + N(1 - A)))
 
 :::
 
+The step-by-step process to calculate the safety index of a city is outlined in the figure below. 
+
+```{figure} https://drive.google.com/file/d/1FyghwQU_2fvE2hiNeOI0teJwWwSDNeGt/view?usp=sharing
+:name: myFigure
+:alt: Image depicting methodology
+:align: center
+
+Flowchart of the process to determine safety index. Our model takes as inputs the number of incidents of each significant crime, population, time period in days, arrest percentage, and severity of each crime. It calculates various intermediate values, such as crime per hundred thousand people per day, and the crime score for each crime. Then, it calculates a crime score differential for a given type of crime, based on the national score for that crime. The crime score differentials for each type of crime are summed together to determine the overall safety index of a city.
+```
 
