@@ -190,7 +190,7 @@ We separate the crimes based on how many resulted in arrests by multiplying the 
 
 To make our model easily interpretable, we subtracted the crime score calculated for a specific crime in a given city from the corresponding national score for that crime. The national crime score, CS{sub}`n`, for each crime category, was determined using the same formula applied at the city level; however, for the national calculation, CHPD was computed using the entire U.S. population in 2015 (**P = 320 million**) and the total number of days in the year (**D = 365**). This approach is based on the nature of the data from the FBI’s Uniform Crime Report for 2015, which encompasses an entire year. Additionally, since the UCR data includes reported crime incidents for roughly 30% of the total U.S. population, we adjusted the frequency of incidents to reflect the size of the entire population by scaling the incident numbers by a factor of 10/3. 
 
-In our model, a negative value compared to the national average for a specific crime indicates that the city is less safe for a given crime than the national average, and a positive value compared to the national average indicates that the city is safer for a specific crime. See Equation {eq}`my-equation-3`
+In our model, a negative value compared to the national average for a specific crime indicates that the city is less safe for a given crime than the national average, and a positive value compared to the national average indicates that the city is safer for a specific crime. See Equation {eq}`my-equation-3`.
 
 ```{math}
 :label: my-equation-3
