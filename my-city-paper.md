@@ -213,7 +213,7 @@ The complete model is shown below, where the sum is for all 12 crimes. See Equat
 SI = \sum (CS_n - S(0.8N A + N(1 - A)))
 ```
 :::{table} National crime score (CS{sub}`n`) values for each of the 12 significant crimes. Theft has the highest CS{sub}`n` value (17.01) whereas arson has the lowest CSn value (0.28). The CS{sub}`n` values will be used as a benchmark to determine how far a city’s individual crimes are from the national average. 
-:label: table
+:label: severity scores table
 :align: center
 
 | Offense | Severity Score |
@@ -247,7 +247,7 @@ Flowchart of the process to determine safety index. Our model takes as inputs th
 Our model indicates that My City has a Safety Index of -71.13. This negative value suggests that My City is less safe than the national average. To properly interpret this value, comparing it to real-life cities and their known safety reputations is essential. Given My City’s large population of 2.8 million, we chose to compare it with other large cities. We defined a large city as one with a population of over 300,000, following the standard used by Forbes. We selected Chicago for comparison due to its similar population size of 2.7 million. We also included Baltimore, as it is ranked the third most dangerous city in the country by Forbes and had more available data than the two cities ranked as less safe. Additionally, we chose Austin, Texas, and Virginia Beach, Virginia, since Forbes ranked them as the 15th and 2nd safest large cities, respectively. These cities were selected because they had more available data than other relatively safe large cities. The Crime per Hundred People Data (CHPD) and Safety Indices for these cities are presented in Table 4.
 
 :::{table} Comparative safety indices for four cities: My City, Chicago, Austin, and Virginia Beach. Virginia Beach has the highest safety index, followed by Austin, Chicago, and My City. The relative ranking provided by our model aligns with Forbes’ published ranking.
-:label: table
+:label: CSD values
 :align: center
 
 | Crime Category           | Baltimore CSD | My City CSD | Chicago CSD | Austin CSD | Virginia Beach CSD |
@@ -268,4 +268,4 @@ Our model indicates that My City has a Safety Index of -71.13. This negative val
 
 :::
 
-Table 4 shows that the safety rating of My City is most similar to that of Chicago, which has a similar population. Our model identifies Baltimore as the least safe city among those we analyzed. It is important to note that our model interprets negative safety indices as indicating less safe cities than the national average. Yet, it is crucial to remember that these are large cities. Large cities inherently have higher crime rates than smaller towns and rural areas, even after adjusting for population through Crime per Hundred People Data (CHPD). This can be attributed to various socioeconomic factors, including population density and economic disparity ({cite}`10.1016/j.socscimed.2007.07.014`). Therefore, even the safest large cities are generally less safe than the national average, predominantly consisting of smaller towns and rural areas.
+The table above shows that the safety rating of My City is most similar to that of Chicago, which has a similar population. Our model identifies Baltimore as the least safe city among those we analyzed. It is important to note that our model interprets negative safety indices as indicating less safe cities than the national average. Yet, it is crucial to remember that these are large cities. Large cities inherently have higher crime rates than smaller towns and rural areas, even after adjusting for population through Crime per Hundred People Data (CHPD). This can be attributed to various socioeconomic factors, including population density and economic disparity ({cite}`10.1016/j.socscimed.2007.07.014`). Therefore, even the safest large cities are generally less safe than the national average, predominantly consisting of smaller towns and rural areas.
