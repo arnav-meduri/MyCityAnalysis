@@ -139,7 +139,7 @@ plt.show()
 
 ### Design and Justification of Model
 
-We first wanted to consider that not all crimes are equally severe. For example, homicide is a significantly more harmful crime than theft. A crime’s impact on safety depends on its severity, so we assigned a severity score for each crime. We used the average sentencing length from the United States Bureau of Justice Statistics to determine how severe a crime is, as this will account for variation between incidents of a particular crime. For instance, possessing a drug is less severe than distributing it. We also chose sentencing length rather than time spent in prison so penalties for repeat offenses would be ignored, and shorter prison sentences due to parole would also be ignored since these are unrelated to the crime. The severity of each crime is a constant and will be the same for all cities. The severity of each crime is shown in **Table 1**.
+We first wanted to consider that not all crimes are equally severe. For example, homicide is a significantly more harmful crime than theft. A crime’s impact on safety depends on its severity, so we assigned a severity score for each crime. We used the average sentencing length from the United States Bureau of Justice Statistics to determine how severe a crime is, as this will account for variation between incidents of a particular crime. For instance, possessing a drug is less severe than distributing it. We also chose sentencing length rather than time spent in prison so penalties for repeat offenses would be ignored, and shorter prison sentences due to parole would also be ignored since these are unrelated to the crime. The severity of each crime is a constant and will be the same for all cities. The severity of each crime is shown in the table below.
 
 :::{table} Severity scores were assigned to various offenses based on the average sentencing length for each crime, as issued by the United States Bureau of Justice Statistics in 2014.
 :label: table
@@ -175,7 +175,7 @@ D = Number of days
 
 A city with more arrests is generally safer than one with fewer arrests, since it potentially has fewer perpetrators to commit crimes. Our model accounts for the influence of how many crimes result in arrests by incorporating an “arrest mitigation factor.” Crimes that result in arrests are weighed less than crimes in which the perpetrator is not cleared for an arrest.
 
-Using the equation below, we combined these factors to create a “crime score” for each crime category. We chose to calculate a score for each category to provide more granularity. This could be useful to government agencies attempting to analyze the impact of a specific type of crime, or to civilians trying to avoid certain types of crime. See Equation {eq}`my-equation-2`
+Using the equation below, we combined these factors to create a “crime score” for each crime category. We chose to calculate a score for each category to provide more granularity. This could be useful to government agencies attempting to analyze the impact of a specific type of crime, or to civilians trying to avoid certain types of crime. See Equation {eq}`my-equation-2`.
 
 ```{math}
 :label: my-equation-2
@@ -190,7 +190,7 @@ We separate the crimes based on how many resulted in arrests by multiplying the 
 
 To make our model easily interpretable, we subtracted the crime score calculated for a specific crime in a given city from the corresponding national score for that crime. The national crime score, CS{sub}`n`, for each crime category, was determined using the same formula applied at the city level; however, for the national calculation, CHPD was computed using the entire U.S. population in 2015 (**P = 320 million**) and the total number of days in the year (**D = 365**). This approach is based on the nature of the data from the FBI’s Uniform Crime Report for 2015, which encompasses an entire year. Additionally, since the UCR data includes reported crime incidents for roughly 30% of the total U.S. population, we adjusted the frequency of incidents to reflect the size of the entire population by scaling the incident numbers by a factor of 10/3. 
 
-In our model, a negative value compared to the national average for a specific crime indicates that the city is less safe for a given crime than the national average, and a positive value compared to the national average indicates that the city is safer for a specific crime. Equation {eq}`my-equation-3`
+In our model, a negative value compared to the national average for a specific crime indicates that the city is less safe for a given crime than the national average, and a positive value compared to the national average indicates that the city is safer for a specific crime. See Equation {eq}`my-equation-3`
 
 ```{math}
 :label: my-equation-3
