@@ -28,7 +28,7 @@ Furthermore, we conducted an analysis to evaluate safety across different region
 
 ### Analysis of the Problem
 
-We are given a log of all the crimes to occur in My City over a 2 week period from July 5th to July 18th, 2014, which contains the case number, date of occurrence, primary description, secondary description, location description, whether an arrest was made, whether the crime was domestic or not, and the beat number of the crime. Using this log, we determined the frequency of each type of crime, as well as the arrests relative to each type of crime, shown in Figure 1.
+We are given a log of all the crimes to occur in My City over a 2 week period from July 5th to July 18th, 2014, which contains the case number, date of occurrence, primary description, secondary description, location description, whether an arrest was made, whether the crime was domestic or not, and the beat number of the crime. Using this log, we determined the frequency of each type of crime, as well as the arrests relative to each type of crime, shown below. 
 ```python
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -61,7 +61,7 @@ plt.show();
 ```
 ![](#my-cell) 
 
-In addition to analyzing the frequency of each type of crime and the number of arrests, we also examined the number of crime incidents that were categorized as domestic versus non-domestic and those that resulted in an arrest versus no arrest, as shown in the charts (**Figures 2**) below.
+In addition to analyzing the frequency of each type of crime and the number of arrests, we also examined the number of crime incidents that were categorized as domestic versus non-domestic and those that resulted in an arrest versus no arrest, as shown in the charts below.
 ```python 
 data = pd.read_csv(file_path)
 
@@ -162,7 +162,7 @@ We first wanted to consider that not all crimes are equally severe. For example,
 
 :::
 
-Additionally, we wanted to consider the frequency of crime in our model, as more crimes generally indicate that a city is less safe. Since cities with higher populations generally have more crimes than smaller cities, we used a frequency count of crimes per 100,000 people, as this is the standard metric for measuring crime prevalence across varying populations. To account for datasets covering varying lengths of time, we used the count per 100,000 people per day (CHPD) to measure crime prevalence in our model. See Equation {eq} `my-equation-1`.
+Additionally, we wanted to consider the frequency of crime in our model, as more crimes generally indicate that a city is less safe. Since cities with higher populations generally have more crimes than smaller cities, we used a frequency count of crimes per 100,000 people, as this is the standard metric for measuring crime prevalence across varying populations. To account for datasets covering varying lengths of time, we used the count per 100,000 people per day (CHPD) to measure crime prevalence in our model. See Equation {eq}`my-equation-1`.
 
 ```{math}
 :label: my-equation-1
@@ -175,7 +175,7 @@ D = Number of days
 
 A city with more arrests is generally safer than one with fewer arrests, since it potentially has fewer perpetrators to commit crimes. Our model accounts for the influence of how many crimes result in arrests by incorporating an “arrest mitigation factor.” Crimes that result in arrests are weighed less than crimes in which the perpetrator is not cleared for an arrest.
 
-Using the equation below, we combined these factors to create a “crime score” for each crime category. We chose to calculate a score for each category to provide more granularity. This could be useful to government agencies attempting to analyze the impact of a specific type of crime, or to civilians trying to avoid certain types of crime. See Equation {eq} `my-equation-2`.
+Using the equation below, we combined these factors to create a “crime score” for each crime category. We chose to calculate a score for each category to provide more granularity. This could be useful to government agencies attempting to analyze the impact of a specific type of crime, or to civilians trying to avoid certain types of crime. See Equation {eq}`my-equation-2`
 
 ```{math}
 :label: my-equation-2
@@ -190,7 +190,7 @@ We separate the crimes based on how many resulted in arrests by multiplying the 
 
 To make our model easily interpretable, we subtracted the crime score calculated for a specific crime in a given city from the corresponding national score for that crime. The national crime score, CS{sub}`n`, for each crime category, was determined using the same formula applied at the city level; however, for the national calculation, CHPD was computed using the entire U.S. population in 2015 (**P = 320 million**) and the total number of days in the year (**D = 365**). This approach is based on the nature of the data from the FBI’s Uniform Crime Report for 2015, which encompasses an entire year. Additionally, since the UCR data includes reported crime incidents for roughly 30% of the total U.S. population, we adjusted the frequency of incidents to reflect the size of the entire population by scaling the incident numbers by a factor of 10/3. 
 
-In our model, a negative value compared to the national average for a specific crime indicates that the city is less safe for a given crime than the national average, and a positive value compared to the national average indicates that the city is safer for a specific crime. See Equation {eq} `my-equation-3`.
+In our model, a negative value compared to the national average for a specific crime indicates that the city is less safe for a given crime than the national average, and a positive value compared to the national average indicates that the city is safer for a specific crime. Equation {eq}`my-equation-3`
 
 ```{math}
 :label: my-equation-3
@@ -200,13 +200,13 @@ CSD = Crime score differential \
 CS{sub}`n` = National crime score \
 N = Crime score for any city 
 
-The overall safety index for a given city is the sum of the CSDs of all the significant crimes. See Equation {eq} `my-equation-4`.
+The overall safety index for a given city is the sum of the CSDs of all the significant crimes. See Equation {eq}`my-equation-4`.
 
 ```{math}
 :label: my-equation-4
 SI = \sum CSD
 ```
-The complete model is shown below, where the sum is for all 12 crimes. See Equation {eq} `my-equation-5`.
+The complete model is shown below, where the sum is for all 12 crimes. See quation {eq}`my-equation-5`. 
 
 ```{math}
 :label: my-equation-5
@@ -242,7 +242,7 @@ The step-by-step process to calculate the safety index of a city is outlined in 
 
 Flowchart of the process to determine safety index. Our model takes as inputs the number of incidents of each significant crime, population, time period in days, arrest percentage, and severity of each crime. It calculates various intermediate values, such as crime per hundred thousand people per day, and the crime score for each crime. Then, it calculates a crime score differential for a given type of crime, based on the national score for that crime. The crime score differentials for each type of crime are summed together to determine the overall safety index of a city.
 ```
-### Application & Testing of Model
+### Application and Testing of Model
 
 Our model indicates that My City has a Safety Index of -71.13. This negative value suggests that My City is less safe than the national average. To properly interpret this value, comparing it to real-life cities and their known safety reputations is essential. Given My City’s large population of 2.8 million, we chose to compare it with other large cities. We defined a large city as one with a population of over 300,000, following the standard used by Forbes. We selected Chicago for comparison due to its similar population size of 2.7 million. We also included Baltimore, as it is ranked the third most dangerous city in the country by Forbes and had more available data than the two cities ranked as less safe. Additionally, we chose Austin, Texas, and Virginia Beach, Virginia, since Forbes ranked them as the 15th and 2nd safest large cities, respectively. These cities were selected because they had more available data than other relatively safe large cities. The Crime per Hundred People Data (CHPD) and Safety Indices for these cities are presented in Table 4.
 
