@@ -59,17 +59,86 @@ plt.ylabel('Crime Type');
 plt.tight_layout();
 plt.show();
 ```
-![](#my-cell) - This is a cross-reference to a notebook cell
-**Figure 1.** *Frequency of offenses and corresponding arrests in My City. Theft records the highest number of incidents (2658), while narcotics offenses lead in arrest frequency (1178). Conversely, concealed carry violations show the lowest incident frequency (1) and no arrests (0).*
+![](#my-cell) 
+**Figure 1.** Frequency of offenses and corresponding arrests in My City. Theft records the highest number of incidents (2658), while narcotics offenses lead in arrest frequency (1178). Conversely, concealed carry violations show the lowest incident frequency (1) and no arrests (0).
 
-In addition to analyzing the frequency of each type of crime and the number of arrests, we also examined the number of crime incidents that were categorized as domestic versus non-domestic and those that resulted in an arrest versus no arrest, as shown in the charts below.
+In addition to analyzing the frequency of each type of crime and the number of arrests, we also examined the number of crime incidents that were categorized as domestic versus non-domestic and those that resulted in an arrest versus no arrest, as shown in the charts (**Figures 2**) below.
+```python 
+data = pd.read_csv(file_path)
 
-![](#my-cell-2) - This is a cross-reference to a notebook cell
+# Cleaning the data
+data = data.drop(data.tail(5).index) # Remove informational rows
+data.columns = [col.strip() for col in data.columns] # Strip spaces from column names
+data['ARREST'] = data['ARREST'].map({'Y': True, 'N': False})
+
+# Calculating the frequency of domestic and non-domestic crimes
+domestic_counts = data['DOMESTIC'].value_counts().rename({True: 'Domestic', False: 'Non-Domestic'})
+
+# Calculating the number of arrest vs no arrest cases
+arrest_counts = data['ARREST'].value_counts().rename({True: 'Arrest', False: 'No Arrest'})
+
+# Creating DataFrames for visualization
+domestic_df = pd.DataFrame({'Count': domestic_counts})
+arrest_df = pd.DataFrame({'Count': arrest_counts})
+
+# Setting up the figure and axes
+fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(10, 12))
+
+# Plot for Domestic vs Non-Domestic Crimes
+domestic_df.plot(kind='bar', color=['blue', 'red'], ax=axes[0], legend=False)
+axes[0].set_title('Number of Domestic vs Non-Domestic Crimes')
+axes[0].set_xlabel('Crime Type')
+axes[0].set_ylabel('Count')
+axes[0].set_xticklabels(['Non-Domestic', 'Domestic'], rotation=0)
+axes[0].grid(axis='y')
+
+# Plot for Arrest vs No Arrest Cases
+arrest_df.plot(kind='bar', color=['red', 'blue'], ax=axes[1], legend=False)
+axes[1].set_title('Number of Arrest vs No Arrest Cases')
+axes[1].set_xlabel('Case Type')
+axes[1].set_ylabel('Count')
+axes[1].set_xticklabels(['No Arrest', 'Arrest'], rotation=0)
+axes[1].grid(axis='y')
+
+# Adjust layout and display
+plt.tight_layout()
+plt.show()
+```
+![](#my-cell-2)
 **Figure 2.** Top: Number of crime incidents that were categorized as domestic versus non-domestic. Bottom: Number of crime incidents resulting in an arrest vs. no arrest.*
 
-We also analyzed the number of total crimes over the 14-day period, shown below:
-![](#my-cell-3) - This is a cross-reference to a notebook cell
-**Figure 2.** Top: Total number of crime incidents in My City over two week period, from 7/5/2014 to 7/7/2014.*
+We also analyzed the number of total crimes over the 14-day period, shown below in **Figure 3**:
+```python
+import matplotlib.dates as mdates
+
+data = pd.read_csv(file_path)
+
+# Convert 'DATE  OF OCCURRENCE' to datetime format
+data['DATE  OF OCCURRENCE'] = pd.to_datetime(data['DATE  OF OCCURRENCE'], errors='coerce')
+
+# Filtering data for a two-week time span
+start_date = pd.to_datetime("2014-07-01")
+end_date = pd.to_datetime("2014-07-14")
+two_week_data = data[(data['DATE  OF OCCURRENCE'] >= start_date) & (data['DATE  OF OCCURRENCE'] <= end_date)]
+
+# Counting the number of crimes for each day
+daily_crime_counts = two_week_data['DATE  OF OCCURRENCE'].dt.date.value_counts().sort_index()
+
+# Plotting the daily crime counts
+plt.figure(figsize=(12, 6))
+plt.plot(daily_crime_counts, marker='o', color='blue')
+plt.title('Number of Crimes Over Each Day of a Two-Week Time Span')
+plt.xlabel('Date')
+plt.ylabel('Number of Crimes')
+plt.xticks(rotation=45)
+plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+plt.gca().xaxis.set_major_locator(mdates.DayLocator())
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+![](#my-cell-3)
+**Figure 3.** Top: Total number of crime incidents in My City over two week period, from 7/5/2014 to 7/7/2014.*
 
 
 
