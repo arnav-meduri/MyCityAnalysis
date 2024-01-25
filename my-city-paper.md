@@ -105,7 +105,7 @@ plt.show()
 ```
 ![](#my-cell-2)
 
-We also analyzed the number of total crimes over the 14-day period, shown below in **Figure 3**:
+We also analyzed the number of total crimes over the 14-day period, shown below:
 ```python
 import matplotlib.dates as mdates
 
