@@ -26,7 +26,7 @@ Furthermore, we conducted an analysis to evaluate safety across different region
 
 +++
 
-### Analysis of the Problem
+### Analysis of Problem
 
 We are given a log of all the crimes to occur in My City over a 2 week period from July 5th to July 18th, 2014, which contains the case number, date of occurrence, primary description, secondary description, location description, whether an arrest was made, whether the crime was domestic or not, and the beat number of the crime. Using this log, we determined the frequency of each type of crime, as well as the arrests relative to each type of crime, shown below. 
 ```python
