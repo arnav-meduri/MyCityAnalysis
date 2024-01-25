@@ -62,6 +62,17 @@ plt.show();
 ![](#my-cell) - This is a cross-reference to a notebook cell
 **Figure 1.** *Frequency of offenses and corresponding arrests in My City. Theft records the highest number of incidents (2658), while narcotics offenses lead in arrest frequency (1178). Conversely, concealed carry violations show the lowest incident frequency (1) and no arrests (0).*
 
+In addition to analyzing the frequency of each type of crime and the number of arrests, we also examined the number of crime incidents that were categorized as domestic versus non-domestic and those that resulted in an arrest versus no arrest, as shown in the charts below.
+
+![](#my-cell-2) - This is a cross-reference to a notebook cell
+**Figure 2.** Top: Number of crime incidents that were categorized as domestic versus non-domestic. Bottom: Number of crime incidents resulting in an arrest vs. no arrest.*
+
+We also analyzed the number of total crimes over the 14-day period, shown below:
+![](#my-cell-3) - This is a cross-reference to a notebook cell
+**Figure 2.** Top: Total number of crime incidents in My City over two week period, from 7/5/2014 to 7/7/2014.*
+
+
+
 ### Design & Justification of the Model
 
 We first wanted to consider that not all crimes are equally severe. For example, homicide is a significantly more harmful crime than theft. A crime’s impact on safety depends on its severity, so we assigned a severity score for each crime. We used the average sentencing length from the United States Bureau of Justice Statistics to determine how severe a crime is, as this will account for variation between incidents of a particular crime. For instance, possessing a drug is less severe than distributing it. We also chose sentencing length rather than time spent in prison so penalties for repeat offenses would be ignored, and shorter prison sentences due to parole would also be ignored since these are unrelated to the crime. The severity of each crime is a constant and will be the same for all cities. The severity of each crime is shown in **Table 1**.
@@ -189,6 +200,8 @@ Our model indicates that My City has a Safety Index of -71.13. This negative val
 | Burglary                 | -13.36        | -0.77       | 0.12        | -15.70     | 5.25               |
 | Arson                    | -0.73         | -0.17       | -0.16       | -0.06      | 0.16               |
 | Criminal Sexual Assault  | 0.52          | 0.20        | 1.41        | -0.46      | 1.16               |
-| Safety Index             | -101.37       | -71.13      | -60.33      | -6.07      | -0.98              |
+| Safety Index             | **-101.37**       | **-71.13**      | **-60.33**      | **-6.07**     | **-0.98**              |
 
 :::
+
+Table 4 shows that the safety rating of My City is most similar to that of Chicago, which has a similar population. The Gallup poll indicates that Chicago is very unsafe, which means that My City is also very unsafe. Our model identifies Baltimore as the least safe city among those we analyzed, aligning with the Forbes list. However, it is worth noting that Austin and Virginia Beach received negative safety indices from our model, seemingly contradicting the Forbes rankings. Our model interprets negative safety indices as indicating less safe cities than the national average. Yet, it is crucial to remember that these are large cities. Large cities inherently have higher crime rates than smaller towns and rural areas, even after adjusting for population through Crime per Hundred People Data (CHPD). This can be attributed to various socioeconomic factors, including population density and economic disparity. Therefore, even the safest large cities are generally less safe than the national average, predominantly consisting of smaller towns and rural areas.
